@@ -1,0 +1,773 @@
+/* Importing the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Define CSS variables for color palette and other properties */
+:root {
+    --color-primary: #6c9bcf;
+    --color-danger: #ff0060;
+    --color-success: #189c85;
+    --color-warning: #f7d060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    --color-sidebar-header: #ffc62c;
+
+    /* Define reusable dimensions */
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+/* Dark mode variables */
+.dark-mode-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+/* Reset styles for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* Base styles for HTML and body */
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    -webkit-user-select: none; /* Prevent text selection in WebKit-based browsers */
+    user-select: none; /* Prevent text selection in modern browsers */
+    overflow-x: hidden;
+    color: var(--color-dark);
+    background-color: var(--color-background);
+}
+
+/* Anchor tag styles */
+a {
+    color: var(--color-dark);
+}
+
+/* Image styles */
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Heading styles */
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+/* Small text styles */
+small {
+    font-size: 0.76rem;
+}
+
+/* Paragraph styles */
+p {
+    color: var(--color-dark-variant);
+}
+
+/* Bold text styles */
+b {
+    color: var(--color-dark);
+}
+
+/* Muted text styles */
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+/* Primary color text styles */
+.primary {
+    color: var(--color-primary);
+}
+
+/* Danger color text styles */
+.danger {
+    color: var(--color-danger);
+}
+
+/* Sidebar Header color text styles */
+.sidebar-header {
+    color: var(--color-sidebar-header);
+}
+
+/* Success color text styles */
+.success {
+    color: var(--color-success);
+}
+
+/* Warning color text styles */
+.warning {
+    color: var(--color-warning);
+}
+
+/* Container styles */
+.container {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto 23rem;
+}
+
+/* Styles for the sidebar */
+aside {
+    height: 100vh; /* Sidebar takes full height of the viewport */
+}
+
+aside .toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem; /* Spacing between toggle elements */
+}
+
+aside .toggle .logo {
+    display: flex;
+    gap: 0.5rem; /* Gap between logo elements */
+}
+
+aside .toggle .logo img {
+    width: 2rem;
+    height: 2rem; /* Size of logo images */
+}
+
+aside .toggle .close {
+    padding-right: 1rem; /* Padding for close button */
+    display: none; /* Hide close button by default */
+}
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow); /* Add box shadow to sidebar */
+    border-radius: 15px; /* Rounded corners for sidebar */
+    height: 88vh; /* Height of the sidebar */
+    position: relative;
+    top: 1.5rem; /* Positioning of sidebar */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+aside .sidebar:hover {
+    box-shadow: none; /* Remove box shadow on hover */
+}
+
+aside .sidebar a {
+    display: flex;
+    align-items: center;
+    color: var(--color-info-dark); /* Text color for sidebar links */
+    height: 3.7rem; /* Height of sidebar links */
+    gap: 1rem; /* Spacing between icon and text */
+    position: relative;
+    margin-left: 2rem; /* Indentation of sidebar links */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 2rem; /* Positioning of last sidebar link */
+    width: 100%;
+}
+
+aside .sidebar a.active {
+    width: 100%; /* Full width for active sidebar link */
+    color: var(--color-primary); /* Text color for active sidebar link */
+    background-color: var(--color-light); /* Background color for active sidebar link */
+    margin-left: 0; /* Reset indentation for active sidebar link */
+}
+
+aside .sidebar a.active::before {
+    content: ''; /* Pseudo element for active indicator */
+    width: 6px;
+    height: 18px;
+    background-color: var(--color-primary); /* Color for active indicator */
+}
+
+aside .sidebar a.active span {
+    color: var(--color-primary); /* Text color for active sidebar link text */
+    margin-left: calc(1rem - 3px); /* Adjusted indentation for active sidebar link text */
+}
+
+aside .sidebar a:hover {
+    color: var(--color-primary); /* Text color on hover */
+}
+
+aside .sidebar a:hover span {
+    margin-left: 0.6rem; /* Adjusted indentation on hover */
+}
+
+aside .sidebar .message-count {
+    background-color: var(--color-danger); /* Background color for message count */
+    padding: 2px 6px; /* Padding for message count */
+    color: var(--color-white); /* Text color for message count */
+    font-size: 11px; /* Font size for message count */
+    border-radius: var(--border-radius-1); /* Rounded corners for message count */
+}
+
+/* Styles for the main content area */
+main {
+    margin-top: 1.4rem; /* Top margin for main content */
+}
+
+/* Styles for the 'analyse' section */
+main .analyse {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Grid layout with three columns */
+    gap: 1.6rem; /* Gap between grid items */
+}
+
+main .analyse > div {
+    background-color: var(--color-white); /* Background color for grid items */
+    padding: var(--card-padding); /* Padding for grid items */
+    border-radius: var(--card-border-radius); /* Border radius for grid items */
+    margin-top: 1rem; /* Top margin for grid items */
+    box-shadow: var(--box-shadow); /* Box shadow for grid items */
+    cursor: pointer; /* Cursor style for grid items */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+main .analyse > div:hover {
+    box-shadow: none; /* Remove box shadow on hover */
+}
+
+main .analyse > div .status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between elements */
+}
+
+main .analyse h3 {
+    margin-left: 0.6rem; /* Left margin for headings */
+    font-size: 1rem; /* Font size for headings */
+}
+
+main .analyse .progress {
+    position: relative; /* Relative positioning for progress elements */
+    width: 92px; /* Width of progress elements */
+    height: 92px; /* Height of progress elements */
+    border-radius: 50%; /* Border radius for circular progress elements */
+}
+
+main .analyse svg {
+    width: 7rem; /* Width of SVG elements */
+    height: 7rem; /* Height of SVG elements */
+}
+
+main .analyse svg circle {
+    fill: none; /* No fill for SVG circles */
+    stroke-width: 10; /* Stroke width for SVG circles */
+    stroke-linecap: round; /* Round line caps for SVG circles */
+    transform: translate(5px, 5px); /* Translate SVG circles */
+}
+
+
+/*----------------------------------Testing-Analytics-Display----------------------------------------------------------------*/
+
+main .analyse .sales svg circle {
+    stroke: var(--color-success); /* Stroke color for sales SVG circles */
+    stroke-dashoffset: 36.648; /* Offset for 81% progress */
+    stroke-dasharray: 226.194, 226.194; /* Length of the circle's perimeter */
+    transition: stroke-dashoffset 1s ease-in-out; /* Smooth animation */
+}
+
+main .analyse .visits svg circle {
+    stroke: var(--color-danger); /* Stroke color for visits SVG circles */
+    stroke-dashoffset: -108.58; /* Offset for -48% progress */
+    stroke-dasharray: 226.194, 226.194; /* Length of the circle's perimeter */
+    transition: stroke-dashoffset 1s ease-in-out; /* Smooth animation */
+}
+
+main .analyse .searches svg circle {
+    stroke: var(--color-primary); /* Stroke color for searches SVG circles */
+    stroke-dashoffset: 47.701; /* Offset for +21% progress */
+    stroke-dasharray: 226.194, 226.194; /* Length of the circle's perimeter */
+    transition: stroke-dashoffset 1s ease-in-out; /* Smooth animation */
+}
+
+/*
+main .analyse .sales svg circle {
+    stroke: var(--color-success);  Stroke color for sales SVG circles 
+    stroke-dashoffset: -30; /* Stroke dash offset for animation 
+    stroke-dasharray: 200; /* Stroke dash array for animation 
+}
+
+main .analyse .visits svg circle {
+    stroke: var(--color-danger); /* Stroke color for visits SVG circles 
+    stroke-dashoffset: -30; /* Stroke dash offset for animation 
+    stroke-dasharray: 200; /* Stroke dash array for animation 
+}
+
+main .analyse .searches svg circle {
+    stroke: var(--color-primary); /* Stroke color for searches SVG circles 
+    stroke-dashoffset: -30; /* Stroke dash offset for animation 
+    stroke-dasharray: 200; /* Stroke dash array for animation 
+}
+*/
+
+/*----------------------------------End-of-Test----------------------------------------------------------------*/
+
+
+main .analyse .progress .percentage {
+    position: absolute; /* Absolute positioning for percentage elements */
+    top: -3px; /* Top positioning for percentage elements */
+    left: -1px; /* Left positioning for percentage elements */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center alignment for percentage elements */
+    height: 100%; /* Height of percentage elements */
+    width: 100%; /* Width of percentage elements */
+}
+
+/* Styles for the 'new-users' section */
+main .new-users {
+    margin-top: 1.3rem; /* Top margin for new-users section */
+}
+
+main .new-users .user-list {
+    background-color: var(--color-white); /* Background color for user list */
+    padding: var(--card-padding); /* Padding for user list */
+    border-radius: var(--card-border-radius); /* Border radius for user list */
+    margin-top: 1rem; /* Top margin for user list */
+    box-shadow: var(--box-shadow); /* Box shadow for user list */
+    display: flex;
+    justify-content: space-around; /* Space around user list items */
+    flex-wrap: wrap; /* Wrap items within user list */
+    gap: 1.4rem; /* Gap between user list items */
+    cursor: pointer; /* Cursor style for user list */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+main .new-users .user-list:hover {
+    box-shadow: none; /* Remove box shadow on hover */
+}
+
+main .new-users .user-list .user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center alignment for user details */
+}
+
+main .new-users .user-list .user img {
+    width: 5rem; /* Width of user images */
+    height: 5rem; /* Height of user images */
+    margin-bottom: 0.4rem; /* Bottom margin for user images */
+    border-radius: 50%; /* Border radius for user images */
+}
+
+/* Styles for the 'recent-orders' section */
+main .recent-orders {
+    margin-top: 1.3rem; /* Top margin for recent orders section */
+}
+
+main .recent-orders h2 {
+    margin-bottom: 0.8rem; /* Bottom margin for headings */
+}
+
+main .recent-orders table {
+    background-color: var(--color-white); /* Background color for tables */
+    width: 100%; /* Full width for tables */
+    padding: var(--card-padding); /* Padding for tables */
+    text-align: center; /* Center alignment for table content */
+    box-shadow: var(--box-shadow); /* Box shadow for tables */
+    border-radius: var(--card-border-radius); /* Border radius for tables */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+main .recent-orders table:hover {
+    box-shadow: none; /* Remove box shadow on hover */
+}
+
+main table tbody td {
+    height: 2.8rem; /* Height of table cells */
+    border-bottom: 1px solid var(--color-light); /* Bottom border for table cells */
+    color: var(--color-dark-variant); /* Text color for table cells */
+}
+
+main table tbody tr:last-child td {
+    border: none; /* Remove border for last row */
+}
+
+main .recent-orders a {
+    text-align: center; /* Center alignment for links */
+    display: block; /* Block display for links */
+    margin: 1rem auto; /* Margin for links */
+    color: var(--color-primary); /* Text color for links */
+}
+
+/* Styles for the right section of the layout */
+.right-section {
+    margin-top: 1.4rem; /* Top margin for the right section */
+}
+
+/* Styles for the navigation section */
+.right-section .nav {
+    display: flex; /* Flex display for navigation */
+    justify-content: end; /* Align items to the end */
+    gap: 2rem; /* Gap between navigation items */
+}
+
+.right-section .nav button {
+    display: none; /* Hide buttons in the navigation */
+}
+
+/* Styles for the dark mode toggle */
+.right-section .dark-mode {
+    background-color: var(--color-light); /* Background color for dark mode toggle */
+    display: flex; /* Flex display for dark mode toggle */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Align items to the center */
+    height: 1.6rem; /* Height of the toggle */
+    width: 4.2rem; /* Width of the toggle */
+    cursor: pointer; /* Cursor style for the toggle */
+    border-radius: var(--border-radius-1); /* Border radius for the toggle */
+}
+
+.right-section .dark-mode span {
+    font-size: 1.2rem; /* Font size for the toggle text */
+    width: 50%; /* Width of the text */
+    height: 100%; /* Height of the text */
+    display: flex; /* Flex display for the text */
+    align-items: center; /* Align text to the center */
+    justify-content: center; /* Center alignment for the text */
+}
+
+.right-section .dark-mode span.active {
+    background-color: var(--color-primary); /* Background color for active state */
+    color: white; /* Text color for active state */
+    border-radius: var(--border-radius-1); /* Border radius for active state */
+}
+
+/* Styles for the profile section in the navigation */
+.right-section .nav .profile {
+    display: flex; /* Flex display for profile section */
+    gap: 2rem; /* Gap between elements */
+    text-align: right; /* Right alignment for text */
+}
+
+.right-section .nav .profile .profile-photo {
+    width: 2.8rem; /* Width of the profile photo */
+    height: 2.8rem; /* Height of the profile photo */
+    border-radius: 50%; /* Border radius for the profile photo */
+    overflow: hidden; /* Hide overflow */
+}
+
+/* Styles for the user profile section */
+.right-section .user-profile {
+    display: flex; /* Flex display for user profile */
+    justify-content: center; /* Center alignment for user profile */
+    text-align: center; /* Center alignment for text */
+    margin-top: 1rem; /* Top margin for user profile */
+    background-color: var(--color-white); /* Background color for user profile */
+    padding: var(--card-padding); /* Padding for user profile */
+    border-radius: var(--card-border-radius); /* Border radius for user profile */
+    box-shadow: var(--box-shadow); /* Box shadow for user profile */
+    cursor: pointer; /* Cursor style for user profile */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.right-section .user-profile:hover {
+    box-shadow: none; /* Remove box shadow on hover */
+}
+
+.right-section .user-profile img {
+    width: 11rem; /* Width of the profile image */
+    height: auto; /* Auto height for the profile image */
+    margin-bottom: 0.8rem; /* Bottom margin for the profile image */
+    border-radius: 50%; /* Border radius for the profile image */
+}
+
+.right-section .user-profile h2 {
+    margin-bottom: 0.2rem; /* Bottom margin for the heading */
+}
+
+/* Styles for the reminders section */
+.right-section .reminders {
+    margin-top: 2rem; /* Top margin for the reminders section */
+}
+
+.right-section .reminders .header {
+    display: flex; /* Flex display for the header */
+    align-items: center; /* Align items to the center */
+    justify-content: space-between; /* Space between elements */
+    margin-bottom: 0.8rem; /* Bottom margin for the header */
+}
+
+.right-section .reminders .header span {
+    padding: 10px; /* Padding for the span */
+    box-shadow: var(--box-shadow); /* Box shadow for the span */
+    background-color: var(--color-white); /* Background color for the span */
+    border-radius: 50%; /* Border radius for the span */
+}
+
+.right-section .reminders .notification {
+    background-color: var(--color-white); /* Background color for notifications */
+    display: flex; /* Flex display for notifications */
+    align-items: center; /* Align items to the center */
+    gap: 1rem; /* Gap between elements */
+    margin-bottom: 0.7rem; /* Bottom margin for notifications */
+    padding: 1.4rem var(--card-padding); /* Padding for notifications */
+    border-radius: var(--border-radius-2); /* Border radius for notifications */
+    box-shadow: var(--box-shadow); /* Box shadow for notifications */
+    cursor: pointer; /* Cursor style for notifications */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.right-section .reminders .notification:hover {
+    box-shadow: none; /* Remove box shadow on hover */
+}
+
+.right-section .reminders .notification .content {
+    display: flex; /* Flex display for notification content */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Align items to the center */
+    margin: 0; /* Remove margin */
+    width: 100%; /* Full width for notification content */
+}
+
+.right-section .reminders .notification .icon {
+    padding: 0.6rem; /* Padding for the icon */
+    color: var(--color-white); /* Text color for the icon */
+    background-color: var(--color-success); /* Background color for the icon */
+    border-radius: 20%; /* Border radius for the icon */
+    display: flex; /* Flex display for the icon */
+}
+
+.right-section .reminders .notification.deactive .icon {
+    background-color: var(--color-danger); /* Background color for deactivated notifications */
+}
+
+.right-section .reminders .add-reminder {
+    background-color: var(--color-white); /* Background color for add reminder button */
+    border: 2px dashed var(--color-primary); /* Border for add reminder button */
+    color: var(--color-primary); /* Text color for add reminder button */
+    display: flex; /* Flex display for add reminder button */
+    align-items: center; /* Align items to the center */
+    justify-content: center; /* Center alignment for text */
+    cursor: pointer; /* Cursor style for add reminder button */
+}
+
+.right-section .reminders .add-reminder:hover {
+    background-color: var(--color-primary); /* Background color on hover */
+    color: white; /* Text color on hover */
+}
+
+.right-section .reminders .add-reminder div {
+    display: flex; /* Flex display for the inner div */
+    align-items: center; /* Align items to the center */
+    gap: 0.6rem; /* Gap between elements */
+}
+
+/* Media queries for screen width up to 1200px */
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 95%; /* Adjust container width */
+        grid-template-columns: 7rem auto 23rem; /* Adjust grid template columns */
+    }
+
+    aside .logo h2 {
+        display: none; /* Hide logo heading */
+    }
+
+    aside .sidebar h3 {
+        display: none; /* Hide sidebar heading */
+    }
+
+    aside .sidebar a {
+        width: 5.6rem; /* Adjust sidebar link width */
+    }
+
+    aside .sidebar a:last-child {
+        position: relative; /* Position relative for last sidebar link */
+        margin-top: 1.8rem; /* Adjust top margin */
+    }
+
+    main .analyse {
+        grid-template-columns: 1fr; /* Adjust grid template columns for analysis section */
+        gap: 0; /* Remove gap */
+    }
+
+    main .new-users .user-list .user {
+        flex-basis: 40%; /* Adjust flex basis for user list */
+    }
+
+    main .recent-orders {
+        width: 94%; /* Adjust width */
+        position: absolute; /* Position absolute */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Translate horizontally */
+        margin: 2rem 0 0 0.8rem; /* Adjust margins */
+    }
+
+    main .recent-orders table {
+        width: 83vw; /* Adjust table width */
+    }
+
+    main table thead tr th:last-child,
+    main table thead tr th:first-child {
+        display: none; /* Hide first and last table header cells */
+    }
+
+    main table tbody tr td:last-child,
+    main table tbody tr td:first-child {
+        display: none; /* Hide first and last table body cells */
+    }
+}
+
+/* Media queries for screen width up to 768px */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%; /* Adjust container width */
+        grid-template-columns: 1fr; /* Set single column layout */
+        padding: 0 var(--padding-1); /* Adjust padding */
+    }
+
+    aside {
+        position: fixed; /* Position fixed */
+        background-color: var(--color-white); /* Background color */
+        width: 15rem; /* Width of aside */
+        z-index: 3; /* Set z-index */
+        box-shadow: 1rem 3rem 4rem var(--color-light); /* Box shadow */
+        height: 100vh; /* Full height */
+        left: -100%; /* Initial position */
+        display: none; /* Hide initially */
+        animation: showMenu 0.4s ease forwards; /* Animation */
+    }
+
+    @keyframes showMenu {
+        to {
+            left: 0; /* Slide to the left */
+        }
+    }
+
+    aside .logo {
+        margin-left: 1rem; /* Adjust margin */
+    }
+
+    aside .logo h2 {
+        display: inline; /* Display logo heading */
+    }
+
+    aside .sidebar h3 {
+        display: inline; /* Display sidebar heading */
+    }
+
+    aside .sidebar a {
+        width: 100%; /* Full width for sidebar links */
+        height: 3.4rem; /* Height for sidebar links */
+    }
+
+    aside .sidebar a:last-child {
+        position: absolute; /* Position absolute */
+        bottom: 5rem; /* Set bottom position */
+    }
+
+    aside .toggle .close {
+        display: inline-block; /* Display close button */
+        cursor: pointer; /* Cursor style */
+    }
+
+    main {
+        margin-top: 8rem; /* Adjust top margin */
+        padding: 0 1rem; /* Adjust padding */
+    }
+
+    main .new-users .user-list .user {
+        flex-basis: 35%; /* Adjust flex basis for user list */
+    }
+
+    main .recent-orders {
+        position: relative; /* Position relative */
+        margin: 3rem 0 0 0; /* Adjust margins */
+        width: 100%; /* Full width */
+    }
+
+    main .recent-orders table {
+        width: 100%; /* Full width for table */
+        margin: 0; /* Remove margin */
+    }
+
+    .right-section {
+        width: 94%; /* Adjust width */
+        margin: 0 auto 4rem; /* Adjust margins */
+    }
+
+    .right-section .nav {
+        position: fixed; /* Position fixed */
+        top: 0; /* Align to top */
+        left: 0; /* Align to left */
+        align-items: center; /* Align items to center */
+        background-color: var(--color-white); /* Background color */
+        padding: 0 var(--padding-1); /* Adjust padding */
+        height: 4.6rem; /* Height of navigation */
+        width: 100%; /* Full width */
+        z-index: 2; /* Set z-index */
+        box-shadow: 0 1rem 1rem var(--color-light); /* Box shadow */
+        margin: 0; /* Remove margin */
+    }
+
+    .right-section .nav .dark-mode {
+        width: 4.4rem; /* Adjust width */
+        position: absolute; /* Position absolute */
+        left: 66%; /* Adjust left position */
+    }
+
+    .right-section .profile .info {
+        display: none; /* Hide profile info */
+    }
+
+    .right-section .nav button {
+        display: inline-block; /* Display buttons */
+        background-color: transparent; /* Transparent background */
+        cursor: pointer; /* Cursor style */
+        color: var(--color-dark); /* Text color */
+        position: absolute; /* Position absolute */
+        left: 1rem; /* Adjust left position */
+    }
+
+    .right-section .nav button span {
+        font-size: 2rem; /* Adjust font size */
+    }
+}
