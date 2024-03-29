@@ -30,18 +30,28 @@ This project aims to create a responsive admin dashboard with the following feat
 ### Screenshot
 
                                                       Desktop view
-![faq-accordion-desktop-screenshot.png](./assets/images/faq-accordion-desktop-screenshot.png)
+
+                                                      Light Mode
+![radd-light-mode-desktop-screenshot.png](images/radd-light-mode-desktop-screenshot.png)
+
+                                                      Dark Mode
+![radd-dark-mode-desktop-screenshot.png](images/radd-dark-mode-desktop-screenshot.png)
 
 
                                                       Mobile view
-![faq-accordion-mobile-screenshot.jpg](./assets/images/faq-accordion-mobile-screenshot.jpg)
+
+                                                      Light Mode
+![radd-light-mode-mobile-screenshot.jpg](images/radd-light-mode-mobile-screenshot.jpg)
+
+                                                      Dark Mode
+![radd-dark-mode-mobile-screenshot.jpg](images/radd-dark-mode-mobile-screenshot.jpg)
 
 
 
 ### Links
 
-- [Solution URL](https://github.com/SHABA01/faq-frontend)
-- [Live Site URL](https://shaba01.github.io/faq-frontend)
+- [Solution URL](https://github.com/SHABA01/Responsive-Admin-Dashboard-Design-1)
+- [Live Site URL](https://shaba01.github.io/Responsive-Admin-Dashboard-Design-1)
 
 ## My process
 
